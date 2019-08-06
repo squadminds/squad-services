@@ -3,16 +3,16 @@
     ADMIN
 {% endblock %}
 {% block content %}
-    <h1>Welcome To Admin App Middleware Page</h1>
+    <h1>Welcome To Admin App</h1>
     {% if user.is_authenticated and not user.is_superuser %}
         <p>You are logged in as <b style="background-color: linen;">{{ user.username }}</b>
-            and can not go further. Please <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+            and can not go further. Please <a class="btn btn-dark btn-sm" href="{% url 'logout' %}">Logout</a>
             and Login from an Admin Account</p>
     {% elif user.is_superuser %}
-        <p>Welcome {{ user.username }}. Please Navigate to <a href="{% url 'admin_home' %}">
-            <i style="background-color: green; color: white;">Admin Interface</i></a></p>
+        <p>Welcome <i style="font-family: Impact">{{ user.username }}</i>. Please Navigate to <a href="{% url 'admin_home' %}">
+            <i style="background-color: cornflowerblue; color: white;">Admin Interface</i></a></p>
         <a class="btn btn-dark btn-sm" href="{% url 'logout' %}">Logout</a>
      {% else%}
-        <h2>You do not belong here until you <a class="btn btn-primary" href="{% url 'login' %}">Login</a> </h2>
+        <p>You do not belong here until you <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Login</a> as an Admin</p>
     {% endif %}
 {% endblock %}
