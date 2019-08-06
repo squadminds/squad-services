@@ -1,0 +1,16 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+  <h2>Sign up</h2>
+    <form method="POST">
+    {% if form.errors %}
+      {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+      {% endfor %}
+  {% else %}
+    {% bootstrap_form form %}
+    {% csrf_token %}
+        <input class="btn btn-primary" type="submit" value="Submit">
+  {% endif %}
+  </form>
+{% endblock %}
