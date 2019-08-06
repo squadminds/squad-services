@@ -1,0 +1,11 @@
+{% extends 'adminlte/base.html' %}
+{% block title %}User List{% endblock %}
+{% block content %}
+    {% for user in users %}
+        <div class="container skin-black">
+            <h4><a href="{% url 'admin:user_detail' pk=user.pk %}">{{ user.username }}</a></h4>
+            <hr>
+        </div>
+    {% endfor %}
+
+{% endblock %}
