@@ -1,12 +1,14 @@
 {% extends 'adminlte/base.html' %}
 {% block title %}
-User Detail
+    User Detail
 {% endblock %}
 
 {% block content %}
-    <p>username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Active: {% if user.is_active %} Yes {% else %} No {% endif %}</p>
-    <p>Member Since: {{ user.date_joined }}</p>
+    <div class="container w3-light-pink">
+        <p>username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Active: {% if user.is_active %} Yes {% else %} No {% endif %}</p>
+        <p>Member Since: {{ user.date_joined }}</p>
+    </div>
 
 {% endblock %}
