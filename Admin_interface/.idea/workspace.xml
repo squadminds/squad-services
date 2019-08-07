@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="700371c1-872b-4406-9116-c7c4e7cfe903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/new_user_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_app/templates/admin_app/user_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/user_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_app/templates/admin_app/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin_app/templates/admin_app/user_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+            <state relative-caret-position="224">
+              <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -126,6 +121,7 @@
         <option value="$PROJECT_DIR$/admin_app/urls.py" />
         <option value="$PROJECT_DIR$/accounts/templates/registration/signup.html" />
         <option value="$PROJECT_DIR$/admin_app/templates/admin_app/user_confirm_delete.html" />
+        <option value="$PROJECT_DIR$/admin_app/templates/admin_app/403.html" />
         <option value="$PROJECT_DIR$/admin_app/templates/admin_app/user_list.html" />
       </list>
     </option>
@@ -273,16 +269,15 @@
       <option name="presentableId" value="Default" />
       <updated>1565069878166</updated>
       <workItem from="1565069901354" duration="22499000" />
-      <workItem from="1565153987579" duration="10421000" />
+      <workItem from="1565153987579" duration="12098000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32920000" />
+    <option name="totallyTimeSpent" value="34597000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -457,10 +452,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin_app/templates/admin_app/403.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin_app/templates/admin_app/user_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        <state relative-caret-position="224">
+          <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
         </state>
       </provider>
     </entry>
