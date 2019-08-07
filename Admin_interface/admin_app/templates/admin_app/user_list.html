@@ -5,35 +5,51 @@
     <link rel="stylesheet" type="text/css" href="{% static 'admin_app/css/users_list.css' %}">
 {% endblock %}
 {% block content %}
+
     <div class="container" style="width: 100%;">
-        <div class="table table-bordered table-responsive-sm">
-            <div class="table-head">
-                <div class="row">
-                    <div class="col-lg-2">Username</div>
-                    <div class="col-lg-2">Email</div>
-                    <div class="col-lg-2">Staff Status</div>
-                    <div class="col-lg-2">Active Status</div>
-                    <div class="col-lg-2">Joined On</div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
+        <div class="dropdown">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"> Choose Actions
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href= "{% url 'admin:add_user' %}">Add User</a></li>
+                <li><a href="#">Delete User</a></li>
+                <li><a href="#">Third Action</a></li>
+            </ul>
+        </div>
+
+        <br>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Staff Status</th>
+                <th scope="col">Active Status</th>
+                <th scope="col">Member Since</th>
+            </tr>
+            </thead>
             {% for user in users %}
-                <div id="data-row" class="row">
-                    <div class="col-lg-2"><a href="{% url 'admin:user_detail' pk=user.pk %}">{{ user.username }}</a></div>
-                    <div class="col-lg-2">{{ user.email }}</div>
-                    <div class="col-lg-2">
+                <tbody>
+
+                <tr>
+                    <th scope="row">{{ user.pk }}</th>
+                    <td><a href="{% url 'admin:user_detail' pk=user.pk %}">{{ user.username }}</a></td>
+                    <td>{{ user.email }}</td>
+                    <td>
                         {% if user.is_staff %}<span class="fa fa-check" style="color: green"></span>
                         {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
-                    </div>
-                    <div class="col-lg-2">
+                    </td>
+                    <td>
                         {% if user.is_active %}<span class="fa fa-check" style="color: green"></span>
                         {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
-                    </div>
-                    <div class="col-lg-2">{{ user.date_joined }}</div>
-                </div>
-                <div class="clearfix"></div>
+                    </td>
+                    <td>{{ user.date_joined }}</td>
+                </tr>
+                </tbody>
+
             {% endfor %}
-        </div>
-        <a class="btn btn-primary btn-sm" href="{% url 'admin:add_user' %}">Add User</a>
+        </table>
     </div>
 {% endblock %}
