@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <div class="container" style="width: 100%;">
-        <div class="table table-primary table-bordered">
+        <div class="table table-bordered table-responsive-sm">
             <div class="table-head">
                 <div class="row">
                     <div class="col-lg-2">Username</div>
@@ -28,5 +28,6 @@
                 <div class="clearfix"></div>
             {% endfor %}
         </div>
+    <a class="btn btn-primary btn-sm" href="{% url 'admin:add_user' %}">Add User</a>
     </div>
 {% endblock %}
