@@ -8,18 +8,12 @@
             <h2>Sign up</h2>
         {% endif %}
         <form method="POST">
-            {% if form.errors %}
-                {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                {% endfor %}
+            {% bootstrap_form form %}
+            {% csrf_token %}
+            {% if user.is_superuser %}
+                <input class="btn btn-primary" type="submit" value="Create">
             {% else %}
-                {% bootstrap_form form %}
-                {% csrf_token %}
-                {% if user.is_superuser %}
-                    <input class="btn btn-primary" type="submit" value="Create">
-                {% else %}
-                    <input class="btn btn-primary" type="submit" value="Submit">
-                {% endif %}
+                <input class="btn btn-primary" type="submit" value="Submit">
             {% endif %}
         </form>
     </div>

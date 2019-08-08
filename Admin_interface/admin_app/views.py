@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import user_passes_test
-from django.views.generic import ListView, DetailView, DeleteView, CreateView
+from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from accounts.forms import UserCreateForm
+from django.apps import apps
+from django.db import models
 # Create your views here.
 
 
@@ -24,7 +26,7 @@ class UserListView(UserPassesTestMixin, ListView):
 
 class UserDetailView(UserPassesTestMixin, DetailView):
     model = User
-    context_object_name = 'user'
+    context_object_name = 'this_user'
     template_name = 'admin_app/user_detail.html'
 
     def test_func(self):
@@ -32,7 +34,7 @@ class UserDetailView(UserPassesTestMixin, DetailView):
 
 
 class UserDeleteView(UserPassesTestMixin, DeleteView):
-    success_url= reverse_lazy('admin:user_list')
+    success_url = reverse_lazy('admin:user_list')
     model = User
 
     def test_func(self):
@@ -43,6 +45,26 @@ class UserAdd(UserPassesTestMixin, CreateView):
     form_class = UserCreateForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('admin:user_list')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_user(request):
+    if request.method == 'POST':
+        User.objects.filter(pk__in=request.POST.getlist('checkbox_value')).delete()
+    return redirect('admin:user_list')
+
+
+class UserUpdate(UserPassesTestMixin, UpdateView):
+    models = User
+    fields = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'is_superuser', 'user_permissions')
+    success_url = reverse_lazy('admin:user_list')
+
+    def get_object(self, queryset=None):
+        obj = User.objects.get(pk=self.kwargs['pk'])
+        return obj
 
     def test_func(self):
         return self.request.user.is_superuser

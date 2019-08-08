@@ -18,38 +18,43 @@
         </div>
 
         <br>
-
         <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Username</th>
-                <th scope="col">Email</th>
-                <th scope="col">Staff Status</th>
-                <th scope="col">Active Status</th>
-                <th scope="col">Member Since</th>
-            </tr>
-            </thead>
-            {% for user in users %}
-                <tbody>
-
+            <form id="delete_form" action="{% url 'admin:delete_selected_user' %}" method="POST">
+                {% csrf_token %}
+                <thead>
                 <tr>
-                    <th scope="row">{{ user.pk }}</th>
-                    <td><a href="{% url 'admin:user_detail' pk=user.pk %}">{{ user.username }}</a></td>
-                    <td>{{ user.email }}</td>
-                    <td>
-                        {% if user.is_staff %}<span class="fa fa-check" style="color: green"></span>
-                        {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
-                    </td>
-                    <td>
-                        {% if user.is_active %}<span class="fa fa-check" style="color: green"></span>
-                        {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
-                    </td>
-                    <td>{{ user.date_joined }}</td>
+                    <th scope="col"><input type="checkbox" id="select_all_checkbox" name="select_all_checkbox"></th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Staff Status</th>
+                    <th scope="col">Active Status</th>
+                    <th scope="col">Member Since</th>
                 </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th scope="col">
+                            <input type="checkbox" name="checkbox_value" value="{{ user.pk }}">
+                        </th>
+                        <td><a href="{% url 'admin:user_detail' pk=user.pk %}">{{ user.username }}</a></td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {% if user.is_staff %}<span class="fa fa-check" style="color: green"></span>
+                            {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
+                        </td>
+                        <td>
+                            {% if user.is_active %}<span class="fa fa-check" style="color: green"></span>
+                            {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
+                        </td>
+                        <td>{{ user.date_joined }}</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
-
-            {% endfor %}
+            </form>
         </table>
     </div>
+
+    <input type="submit" id="delete-button" name="delete_button" form="delete_form" value="Delete User">
+
 {% endblock %}
