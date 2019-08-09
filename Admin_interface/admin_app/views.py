@@ -59,11 +59,12 @@ def delete_user(request):
 
 class UserUpdate(UserPassesTestMixin, UpdateView):
     models = User
-    fields = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'is_superuser', 'user_permissions')
-    success_url = reverse_lazy('admin:user_list')
+    fields = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'is_superuser',
+              'user_permissions')
 
     def get_object(self, queryset=None):
         obj = User.objects.get(pk=self.kwargs['pk'])
+        self.success_url = reverse_lazy('admin:user_detail', kwargs={'pk': obj.pk})
         return obj
 
     def test_func(self):
