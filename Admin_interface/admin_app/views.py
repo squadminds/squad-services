@@ -1,13 +1,15 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
 from accounts.forms import UserCreateForm
-from django.apps import apps
-from django.db import models
-# Create your views here.
+from django.urls import reverse_lazy
+from admin_app.forms import PasswordChangeForm
+
+
+# Create your views here
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -69,3 +71,39 @@ class UserUpdate(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+class ChangePassword(UserPassesTestMixin, PasswordChangeView):
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class PasswordChange(UserPassesTestMixin, UpdateView):
+
+    form_class = PasswordChangeForm
+    template_name = 'registration/password_change_form.html'
+    success_url = reverse_lazy('login')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })

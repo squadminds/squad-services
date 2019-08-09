@@ -1,9 +1,10 @@
-{% extends 'adminlte/base.html' %}
+{% extends 'admin_app/base.html' %}
 <!-- GO TO C:\Users\Shady\django-env\lib\site-packages\django_adminlte\templates\adminlte\lib\_main_header.html
 abd Change url '#' as a function called password change !-->
 
 {% block title %}My App{% endblock %}
 {% block content %}
+
     <h1>Welcome</h1>
     <h4 style="font-family: Impact; color: teal; font-style: oblique;">{{ user.username }}</h4>
 {% endblock %}

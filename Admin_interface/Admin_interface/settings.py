@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'admin_app.apps.AdminAppConfig',
     'accounts',
-    'django_adminlte',
-    'django_adminlte_theme',
     'bootstrap4',
 
 ]
