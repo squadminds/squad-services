@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'admin_app/base.html' %}
 {% load static %}
-{% block title %}User List{% endblock %}
-{% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'admin_app/css/users_list.css' %}">
-{% endblock %}
-{% block content %}
+{% block content_class %}
 
     <div class="container" style="width: 100%;">
         <div class="dropdown">
@@ -56,5 +52,4 @@
     </div>
 
     <input type="submit" id="delete-button" name="delete_button" form="delete_form" value="Delete User">
-
 {% endblock %}
