@@ -7,7 +7,8 @@ from django.contrib.auth.views import PasswordChangeView
 from accounts.forms import UserCreateForm
 from django.urls import reverse_lazy
 from admin_app.forms import PasswordChangeForm
-
+from catalogue.models import Product
+from category.models import Category
 
 # Create your views here
 
@@ -73,37 +74,69 @@ class UserUpdate(UserPassesTestMixin, UpdateView):
         return self.request.user.is_superuser
 
 
-class ChangePassword(UserPassesTestMixin, PasswordChangeView):
+class CategoryListView(UserPassesTestMixin, ListView):
+    model = Category
+    template_name = 'admin_app/category_list.html'
+    context_object_name = 'category'
 
     def test_func(self):
         return self.request.user.is_superuser
 
 
-class PasswordChange(UserPassesTestMixin, UpdateView):
+class CategoryAdd(UserPassesTestMixin, CreateView):
+    model = Category
+    fields = '__all__'
+    template_name = 'admin_app/create_category.html'
+    success_url = reverse_lazy('admin:category_list')
 
-    form_class = PasswordChangeForm
-    template_name = 'registration/password_change_form.html'
-    success_url = reverse_lazy('login')
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class CategoryDetailUpdate(UserPassesTestMixin, UpdateView):
+    model = Category
+    fields = '__all__'
+    context_object_name = 'category'
+    template_name = 'admin_app/update_category.html'
 
     def get_object(self, queryset=None):
-        return self.request.user
+        obj = Category.objects.get(pk=self.kwargs['pk'])
+        self.success_url = reverse_lazy('admin:category_list')
+        return obj
 
     def test_func(self):
         return self.request.user.is_superuser
 
 
-def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
-        else:
-            messages.error(request, 'Please correct the error below.')
-    else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', {
-        'form': form
-    })
+class ProductListView(UserPassesTestMixin, ListView):
+    model = Product
+    template_name = 'admin_app/product_list.html'
+    context_object_name = 'products'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class ProductAdd(UserPassesTestMixin, CreateView):
+    model = Product
+    fields = '__all__'
+    template_name = 'admin_app/create_product.html'
+    success_url = reverse_lazy('admin:product_list')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class ProductDetailUpdate(UserPassesTestMixin, UpdateView):
+    model = Product
+    fields = '__all__'
+    context_object_name = 'product'
+    template_name = 'admin_app/update_product.html'
+
+    def get_object(self, queryset=None):
+        obj = Product.objects.get(pk=self.kwargs['pk'])
+        self.success_url = reverse_lazy('admin:product_list')
+        return obj
+
+    def test_func(self):
+        return self.request.user.is_superuser

@@ -1,0 +1,17 @@
+{% extends 'admin_app/base.html' %}
+{% load bootstrap4 %}
+{% block your_title %}
+    New Category
+{% endblock %}
+
+{% block body_header_name %}
+    Create New Category
+{% endblock %}
+
+{% block content_class %}
+    <form method="POST">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <input type="submit" value="Add Category">
+    </form>
+{% endblock %}

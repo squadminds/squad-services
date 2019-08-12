@@ -1,0 +1,11 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+{%  for item in category.products.all %}
+    <div class="container" style="border: 5px crimson solid; margin-bottom: 10px; margin-top: 10px">
+    <ul><a  href="{% url 'catalogue:product_detail' slug=item.slug %}"><h4>{{ item.name }}</h4></a></ul>
+    <ul>{{ item.price }}</ul>
+    <p></p>
+    </div>
+{% endfor %}
+{% endblock %}

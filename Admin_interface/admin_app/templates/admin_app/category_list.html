@@ -1,0 +1,19 @@
+{% extends 'admin_app/base.html' %}
+{% block your_title %}
+    Services List
+{% endblock %}
+
+{% block body_header_name %}
+    Category List
+{% endblock %}
+
+{% block content_class %}
+    <div class="container">
+        <a href="{% url 'admin:category_add' %}">Add Category</a>
+        <hr>
+        {% for service in category %}
+            <a href="{% url 'admin:category_update' pk=service.pk %}">{{ service.name }}</a>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock %}

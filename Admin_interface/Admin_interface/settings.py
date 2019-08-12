@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'admin_app.apps.AdminAppConfig',
     'accounts',
     'bootstrap4',
+    'cart',
+    'category',
+    'catalogue',
+    'orders',
 
 ]
 

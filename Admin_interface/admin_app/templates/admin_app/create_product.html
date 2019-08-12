@@ -1,0 +1,17 @@
+{% extends 'admin_app/base.html' %}
+{% load bootstrap4 %}
+{% block your_title %}
+    Add Product
+{% endblock %}
+
+{% block body_header_name %}
+    Add New Product
+{% endblock %}
+
+{% block content_class %}
+    <form method="POST">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <input type="submit" value="Add Product">
+    </form>
+{% endblock %}

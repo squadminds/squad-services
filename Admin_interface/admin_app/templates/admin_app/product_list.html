@@ -1,0 +1,19 @@
+{% extends 'admin_app/base.html' %}
+{% block your_title %}
+    Products
+{% endblock %}
+
+{% block body_header_name %}
+    Products List
+{% endblock %}
+
+{% block content_class %}
+    <div class="container">
+        <a href="{% url 'admin:product_add' %}">Add Product</a>
+        <hr>
+        {% for product in products %}
+            <a href="{% url 'admin:product_update' pk=product.pk %}">{{ product.name }}</a>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock %}

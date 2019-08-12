@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container" style="background: lightcyan">
+    <h1>Checkout</h1>
+				<h3>Review order</h3>
+                <ul class="container" style="list-style-type:none;">
+                    {% for item in cart	%}
+                        <li>
+                            <span style="font-family: 'Apple Color Emoji';color: rebeccapurple"><strong>{{ item.quantity }}x {{ item.product.name }}</strong></span>-
+                            <span style="font-family: DialogInput; color: black"> Rs.{{ item.total_price }}</span>
+                        </li>
+                    {% endfor %}
+				</ul>
+
+    <p>Total: Rs.{{ cart.total_price }}</p>
+
+    <div class="container">
+        <form action="." method="post" class="form-text">
+            {% if form.errors %}
+            <p>{{ form.errors|linebreaks }}</p>
+            {% bootstrap_form form %}
+            {%	csrf_token	%}
+            <p><input class="btn btn-primary" type="submit"value="PAY"></p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

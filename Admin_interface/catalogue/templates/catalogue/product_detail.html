@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container" style="background: lightcoral">
+    <div class="container" style="background: lavender">
+
+        <ul><h2 style="color: rebeccapurple">{{ product.name }}</h2></ul>
+        <ul>{{ product.price }}</ul>
+        <ul>Belongs to: <a href="{% url 'category:category_detail' slug=product.category.slug %}"> {{ product.category }}</a></ul>
+        <ul><a class="btn btn-primary btn-sm" href="{% url 'cart:add' id=product.id %}">ADD TO CART</a></ul>
+
+    </div>
+</div>
+
+{%  endblock %}

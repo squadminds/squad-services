@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="jumbotron" style="background: lightsteelblue">
+    {% if cart.total_price > 0 %}
+        {% for item in cart %}
+            {% with product=item.product %}
+
+                <ul class="container" style="background: lightcyan;list-style-type:none;">
+                    <li><h2 style="color: lightcoral"><a href="{% url 'catalogue:product_detail' slug=product.slug %}">{{ product.name }}</a></h2></li>
+                    <li>Price Per Unit: Rs {{ item.price }}</li>
+                    <li>Quantity: {{ item.quantity }}</li>
+                        <p></p>
+                    <a class="btn btn-info btn-sm" href="{% url 'cart:add' id=product.id %}">ADD</a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'cart:remove' id=product.id %}">Remove</a>
+                        <p></p>
+                </ul>
+
+            {% endwith %}
+        {% endfor %}
+     <ul class="container" style="list-style-type:none">
+         <h5 style="color: black">Total Items: {{ cart|length }}</h5>
+         <h5 style="color: black">Pay Rs {{ cart.total_price }}</h5>
+         <a class="btn btn-success btn-sm" href="{% url 'orders:checkout' %}">Chekout</a>
+     </ul>
+ {% else %}
+        <div class="container">
+            <h3 style="font-family: 'Apple Color Emoji'"> Cart Empty</h3>
+            <p></p>
+            <a class="btn btn-primary btn-sm" href="{% url 'home' %}">Shop Here</a>
+        </div>
+ {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'admin_app/base.html' %}
+{% load bootstrap4 %}
+{% block your_title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block body_header_name %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content_class %}
+    <div class="row">
+        <div class="container">
+            <span>
+                <h3>Belongs to: <a href="{% url 'admin:category_update' pk=product.category.pk %}">
+                    {{ product.category.name }}</a></h3>
+            </span>
+        </div>
+        <div class="col-md-7">
+            <h3>Update</h3>
+            <form method="POST">
+                {% bootstrap_form form %}
+                {% csrf_token %}
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+{% endblock %}

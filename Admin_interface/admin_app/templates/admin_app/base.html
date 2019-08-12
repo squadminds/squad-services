@@ -338,10 +338,25 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{% url 'admin:user_list' %}"><i class="fa fa-user-circle"></i> Users List</a></li>
-                        <li class="active"><a href="{% url 'admin:add_user' %}"><i class="fa fa-user-plus"></i>Add User</a></li>
+                        <li>
+                            <a href="{% url 'admin:user_list' %}"><i class="fa fa-user-circle"></i> Users List</a>
+                        </li>
+                        <li class="active">
+                            <a href="{% url 'admin:add_user' %}"><i class="fa fa-user-plus"></i>Add User</a>
+                        </li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="{% url 'admin:category_list' %}"><i class="fa fa-globe"></i><span>Services</span></a>
+                </li>
+
+                <li>
+                    <a href="{% url 'admin:product_list' %}">
+                        <i class="fa fa-product-hunt"></i><span>Products</span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="{% static 'admin_app/pages/calendar.html' %}">
                         <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -354,7 +369,7 @@
 
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Multilevel</span>
+                        <i class="fa fa-share-square"></i> <span>Multilevel</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
