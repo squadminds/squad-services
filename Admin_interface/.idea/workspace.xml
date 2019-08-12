@@ -2,67 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="700371c1-872b-4406-9116-c7c4e7cfe903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/category_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/create_category.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/create_product.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/product_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/update_category.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/update_product.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/cart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/context_processors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/templates/cart/show_cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/migrations/0002_auto_20190719_1056.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/migrations/0003_product_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/templates/catalogue/product_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogue/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/migrations/0002_category_available.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/templates/category/category_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/migrations/0002_auto_20190719_1147.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/templates/orders/order_create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/templates/orders/thankyou.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin_interface/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Admin_interface/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_app/templates/admin_app/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +124,7 @@
       <workItem from="1565331026239" duration="3598000" />
       <workItem from="1565334722295" duration="22042000" />
       <workItem from="1565582829399" duration="2950000" />
-      <workItem from="1565586394285" duration="6083000" />
+      <workItem from="1565586394285" duration="7278000" />
     </task>
     <servers />
   </component>
