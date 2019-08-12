@@ -1,9 +1,9 @@
 from django.urls import path
-from .models import Category
-from .views import CategoryDetailView
+from . import views
 
-app_name='category'
+app_name = 'category'
 
 urlpatterns=[
-    path('<slug:slug>',CategoryDetailView.as_view(),name='category_detail'),
+    path('', views.ServiceList.as_view(), name='service_list'),
+    path('<slug:slug>/',views.ServiceDetailView.as_view(),name='service_detail'),
 ]

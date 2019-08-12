@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services</title>
+</head>
+<body>
+<h1>Services Provided</h1>
+{% for service in services %}
+    <a href="{% url 'category:service_detail' slug=service.slug %}">{{ service.name }}</a>
+    <hr>
+{% endfor %}
+</body>
+</html>

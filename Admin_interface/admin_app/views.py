@@ -15,7 +15,7 @@ from category.models import Category
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin_home(request):
-    return render(request, 'admin_app/admin_welcome_page.html')
+    return render(request, 'admin_app/admin_home.html')
 
 
 class UserListView(UserPassesTestMixin, ListView):

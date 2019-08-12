@@ -17,7 +17,11 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='admin_app/home.html'), name='home'),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('services/', include('category.urls')),
+    path('products/', include('catalogue.urls')),
+    path('cart/', include('cart.urls')),
+    path('orders/', include('orders.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', include('admin_app.urls')),

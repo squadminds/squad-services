@@ -9,8 +9,7 @@
                         and can not go further. Please <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
                         and Login from an Admin Account</p>
                 {% elif user.is_superuser %}
-                    <p>Welcome <i style="font-family: Impact">{{ user.username }}</i>. Please Navigate to
-                        <a href="{% url 'admin:admin_home' %}"><i style="background-color: cornflowerblue; color: white;">Admin Interface</i></a></p>
+                    <p>You are logged in as <i style="font-family: Impact">{{ user.username }}</i></p>
                     <a class="btn btn-danger btn-sm" href="{% url 'logout' %}">Logout</a>
                 {% else%}
                     <p>You do not belong here until you <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Login</a> as an Admin</p>
