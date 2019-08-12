@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.contrib.auth.views import PasswordChangeView
 from accounts.forms import UserCreateForm
 from django.urls import reverse_lazy

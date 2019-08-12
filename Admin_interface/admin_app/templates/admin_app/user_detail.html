@@ -5,17 +5,18 @@
         <a class="btn btn-primary btn-sm" href="{% url 'admin:update_user' pk=this_user.pk %}">UPDATE</a>
 
 
-                    <p>username: {{ this_user.username }}</p>
-                    <p>Email: {{ this_user.email }}</p>
-                    <p>First Name: {{ this_user.first_name }}</p>
-                    <p>Last Name: {{ this_user.last_name }}</p>
-                    <p>Active: {% if this_user.is_active %} Yes {% else %} No {% endif %}</p>
-                    <p>Member Since: {{ this_user.date_joined }}</p>
-                    <p>Last Login: {{ this_user.last_login }}</p>
+        <p>username: {{ this_user.username }}</p>
+        <p>Email: {{ this_user.email }}</p>
+        <p>First Name: {{ this_user.first_name }}</p>
+        <p>Last Name: {{ this_user.last_name }}</p>
+        <p>Active: {% if this_user.is_active %} Yes {% else %} No {% endif %}</p>
+        <p>Member Since: {{ this_user.date_joined }}</p>
+        <p>Last Login: {{ this_user.last_login }}</p>
 
-                    <form  action="{% url 'admin:delete_user' pk=this_user.pk %}" method="POST">
-                        {% csrf_token %}
-                        <input class="btn btn-danger btn-sm" type="submit" value="Delete User">
-                    </form>
-        </div>
+        <form  action="{% url 'admin:delete_user' pk=this_user.pk %}" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-danger btn-sm" type="submit" value="Delete User">
+        </form>
+    {{ this_user.get_all_permissions }}
+    </div>
 {% endblock %}

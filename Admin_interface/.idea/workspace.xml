@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="700371c1-872b-4406-9116-c7c4e7cfe903" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_app/templates/admin_app/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_app/templates/admin_app/user_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/templates/admin_app/user_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_app/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +39,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ecom" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -124,7 +126,7 @@
       <workItem from="1565331026239" duration="3598000" />
       <workItem from="1565334722295" duration="22042000" />
       <workItem from="1565582829399" duration="2950000" />
-      <workItem from="1565586394285" duration="7278000" />
+      <workItem from="1565586394285" duration="18132000" />
     </task>
     <servers />
   </component>
