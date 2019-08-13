@@ -4,16 +4,18 @@
 {% endblock %}
 
 {% block body_header_name %}
-    Category List
+    Service Category List
 {% endblock %}
 
 {% block content_class %}
     <div class="container">
-        <a href="{% url 'admin:category_add' %}">Add Category</a>
-        <hr>
-        {% for service in category %}
-            <a href="{% url 'admin:category_update' pk=service.pk %}">{{ service.name }}</a>
-            <br>
-        {% endfor %}
+        <a class="btn btn-success btn-sm" href="{% url 'admin:category_add' %}">Add Service</a>
+        <div class="col-md-4">
+            <ul class="list-group">
+                {% for service in category %}
+                    <li class="list-group-item list-group-item-info"><a href="{% url 'admin:category_update' pk=service.pk %}">{{ service.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}

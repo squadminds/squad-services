@@ -8,12 +8,17 @@
 {% endblock %}
 
 {% block content_class %}
-    <div class="container">
-        <a href="{% url 'admin:product_add' %}">Add Product</a>
-        <hr>
-        {% for product in products %}
-            <a href="{% url 'admin:product_update' pk=product.pk %}">{{ product.name }}</a>
-            <br>
-        {% endfor %}
+    <hr>
+    <div class="row">
+        <a class="btn btn-info btn-sm" href="{% url 'admin:product_add' %}">Add Product</a>
+        <div class="col-xs-5">
+            <ul class="list-group">
+                {% for product in products %}
+                    <li class="list-group-item list-group-item-success">
+                        <a href="{% url 'admin:product_update' pk=product.pk %}">{{ product.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}
