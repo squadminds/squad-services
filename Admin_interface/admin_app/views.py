@@ -44,6 +44,12 @@ class UserListView(UserPassesTestMixin, ListView):
     model = User
     template_name = 'admin_app/user_list.html'
     context_object_name = 'users'
+    def get_queryset(self):
+        queryset = User.objects.all()
+        if self.request.GET.get('sort_by'):
+            queryset = User.objects.order_by(self.request.GET.get('sort_by'))
+        print(queryset)
+        return queryset
 
     def test_func(self):
         return self.request.user.is_superuser
@@ -164,3 +170,23 @@ class ProductDetailUpdate(UserPassesTestMixin, UpdateView):
     def test_func(self):
         return self.request.user.is_superuser
 
+# _______________________Group Views Start from Here ___________________________#
+
+
+class GroupListView(UserPassesTestMixin, ListView):
+    model = User
+    template_name = 'admin_app/group_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        group_name = (self.kwargs['group'])
+        if group_name == 'admin':
+            context['user_list']= User.objects.filter(is_superuser=True, is_staff=True)
+        elif group_name == 'staff':
+            context['user_list'] = User.objects.filter(is_staff=True)
+        else:
+            context['user_list'] = User.objects.filter(is_superuser=False, is_staff=False)
+        return context
+
+    def test_func(self):
+        return self.request.user.is_superuser

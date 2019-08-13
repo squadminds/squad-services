@@ -1,7 +1,10 @@
 {% extends 'admin_app/base.html' %}
 {% load static %}
+{% block extra_style %}
+    th a { color: #63605f;}
+    th a:visited { color: #63605f;}
+{% endblock %}
 {% block content_class %}
-
     <div class="container" style="width: 100%;">
         <div class="dropdown">
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"> Choose Actions
@@ -20,7 +23,9 @@
                 <thead>
                 <tr>
                     <th scope="col"><input type="checkbox" id="select_all_checkbox" name="select_all_checkbox"></th>
-                    <th scope="col">Username</th>
+                    <th scope="col">
+                        <span> Username &nbsp; </span>
+                        <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=first_name">Sort</a></th>
                     <th scope="col">Email</th>
                     <th scope="col">Staff Status</th>
                     <th scope="col">Active Status</th>
@@ -29,24 +34,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for user in users %}
+                {% for this_user in users %}
                     <tr>
                         <th scope="col">
-                            <input type="checkbox" name="checkbox_value" value="{{ user.pk }}">
+                            <input type="checkbox" name="checkbox_value" value="{{ this_user.pk }}">
                         </th>
-                        <td><a href="{% url 'admin:user_detail' pk=user.pk %}">{{ user.username }}</a></td>
-                        <td>{{ user.email }}</td>
+                        <td><a href="{% url 'admin:user_detail' pk=this_user.pk %}">{{ this_user.username }}</a></td>
+                        <td>{{ this_user.email }}</td>
                         <td>
-                            {% if user.is_staff %}<span class="fa fa-check" style="color: green"></span>
+                            {% if this_user.is_staff %}<span class="fa fa-check" style="color: green"></span>
                             {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
                         </td>
                         <td>
-                            {% if user.is_active %}<span class="fa fa-check" style="color: green"></span>
+                            {% if this_user.is_active %}<span class="fa fa-check" style="color: green"></span>
                             {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
                         </td>
-                        <td>{% if user.is_superuser %}<span class="fa fa-check" style="color: green"></span>
+                        <td>{% if this_user.is_superuser %}<span class="fa fa-check" style="color: green"></span>
                         {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}</td>
-                        <td>{{ user.date_joined }}</td>
+                        <td>{{ this_user.date_joined }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
