@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, Permission
 from django.contrib.auth.views import PasswordChangeView
 from accounts.forms import UserCreateForm
 from django.urls import reverse_lazy
-from admin_app.forms import PasswordChangeForm
+from admin_app.forms import MyUserUpdateForm
 from catalogue.models import Product
 from category.models import Category
 
@@ -62,8 +62,7 @@ def delete_user(request):
 
 class UserUpdate(UserPassesTestMixin, UpdateView):
     models = User
-    fields = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'is_superuser',
-              'user_permissions')
+    form_class = MyUserUpdateForm
 
     def get_object(self, queryset=None):
         obj = User.objects.get(pk=self.kwargs['pk'])
