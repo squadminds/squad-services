@@ -1,21 +1,43 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
-from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.contrib.auth.models import User, Permission
-from django.contrib.auth.views import PasswordChangeView
-from accounts.forms import UserCreateForm
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from admin_app.forms import MyUserUpdateForm
+from accounts.forms import UserCreateForm
 from catalogue.models import Product
 from category.models import Category
-
 # Create your views here
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin_home(request):
     return render(request, 'admin_app/admin_home.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('admin:admin_home')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'auth/password_change.html', {
+        'form': form
+    })
+
+
+# ___________________________ User's Views Starts Here ____________________________#
 
 
 class UserListView(UserPassesTestMixin, ListView):
@@ -71,6 +93,8 @@ class UserUpdate(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
+# ____________________ Models Views Starts Here______________________________#
 
 
 class CategoryListView(UserPassesTestMixin, ListView):
@@ -139,3 +163,4 @@ class ProductDetailUpdate(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user.is_superuser
+

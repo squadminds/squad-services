@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin_app.apps.AdminAppConfig',
-    'accounts',
     'bootstrap4',
     'cart',
     'category',
     'catalogue',
-    'orders.apps.OrdersConfig'
+    'orders.apps.OrdersConfig',
+    'accounts',
 ]
 
 MIDDLEWARE = [
