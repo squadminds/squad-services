@@ -48,7 +48,6 @@ class UserListView(UserPassesTestMixin, ListView):
         queryset = User.objects.all()
         if self.request.GET.get('sort_by'):
             queryset = User.objects.order_by(self.request.GET.get('sort_by'))
-        print(queryset)
         return queryset
 
     def test_func(self):

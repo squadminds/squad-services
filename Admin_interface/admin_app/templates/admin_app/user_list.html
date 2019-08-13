@@ -25,12 +25,15 @@
                     <th scope="col"><input type="checkbox" id="select_all_checkbox" name="select_all_checkbox"></th>
                     <th scope="col">
                         <span> Username &nbsp; </span>
-                        <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=first_name">Sort</a></th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Staff Status</th>
-                    <th scope="col">Active Status</th>
-                    <th>Admin</th>
-                    <th scope="col">Member Since</th>
+                        <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=username"></a></th>
+                    <th scope="col">
+                        <span> Name &nbsp; </span>
+                        <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=first_name"></a></th>
+                    <th scope="col">Email &nbsp; <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=email"></a></th>
+                    <th scope="col">Staff Status &nbsp; <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=-is_staff"></a></th>
+                    <th scope="col">Active Status &nbsp; <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=-is_active"></a></th>
+                    <th>Admin &nbsp; <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=-is_superuser"></a></th>
+                    <th scope="col">Member Since &nbsp; <a class="fa fa-sort-up fa-lg" href="{% url 'admin:user_list' %}?sort_by=date_joined"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,6 +43,7 @@
                             <input type="checkbox" name="checkbox_value" value="{{ this_user.pk }}">
                         </th>
                         <td><a href="{% url 'admin:user_detail' pk=this_user.pk %}">{{ this_user.username }}</a></td>
+                        <td>{% if this_user.first_name %}{{ this_user.first_name }}{% else %}____{% endif %}</td>
                         <td>{{ this_user.email }}</td>
                         <td>
                             {% if this_user.is_staff %}<span class="fa fa-check" style="color: green"></span>
