@@ -106,6 +106,10 @@ class CategoryListView(UserPassesTestMixin, ListView):
     template_name = 'admin_app/category_list.html'
     context_object_name = 'category'
 
+    def get_ordering(self):
+        ordering = self.request.GET.get('sort_by')
+        return ordering
+
     def test_func(self):
         return self.request.user.is_superuser
 
@@ -135,10 +139,23 @@ class CategoryDetailUpdate(UserPassesTestMixin, UpdateView):
         return self.request.user.is_superuser
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def delete_category(request):
+    if request.method == 'POST':
+        Category.objects.filter(pk__in=request.POST.getlist('checkbox_value')).delete()
+    return redirect('admin:category_list')
+
+# ____________________________________________Product Views Starts Here _________________________________
+
+
 class ProductListView(UserPassesTestMixin, ListView):
     model = Product
     template_name = 'admin_app/product_list.html'
     context_object_name = 'products'
+
+    def get_ordering(self):
+        ordering = self.request.GET.get('sort_by')
+        return ordering
 
     def test_func(self):
         return self.request.user.is_superuser
@@ -167,6 +184,13 @@ class ProductDetailUpdate(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_product(request):
+    if request.method == 'POST':
+        Product.objects.filter(pk__in=request.POST.getlist('checkbox_value')).delete()
+    return redirect('admin:product_list')
 
 # _______________________Group Views Start from Here ___________________________#
 
