@@ -45,7 +45,12 @@
             </form>
         </div>
         <div class="col-xs-2">
-            <a class="btn btn-success btn-sm" href="{% url 'admin:update_user' pk=this_user.pk %}">Update User</a>
+            <a class="btn btn-success btn-sm" href="{% url 'admin:update_user' pk=this_user.pk %}">Update Details</a>
         </div>
+        {% if this_user == user %}
+            <div class="col-xs-2">
+                <a class="btn btn-primary btn-sm" href="{% url 'admin:change_password' %}">Change Password</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

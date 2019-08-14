@@ -1,0 +1,57 @@
+{% extends 'admin_app/base.html' %}
+{% load static %}
+{% block content_class %}
+
+    <div class="container" style="width: 100%;">
+        <div class="dropdown">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"> Choose Actions
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href= "{% url 'admin:add_user' %}">Add User</a></li>
+                <li><a href="#">Second Action</a></li>
+                <li><a href="#">Third Action</a></li>
+            </ul>
+        </div>
+
+        <br>
+        <table class="table">
+            <form id="delete_form" action="{% url 'admin:delete_selected_user' %}" method="POST">
+                {% csrf_token %}
+                <thead>
+                <tr>
+                    <th scope="col"><input type="checkbox" id="select_all_checkbox" name="select_all_checkbox"></th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Staff Status</th>
+                    <th scope="col">Active Status</th>
+                    <th>Admin</th>
+                    <th scope="col">Member Since</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for this_user in user_list %}
+                    <tr>
+                        <th scope="col">
+                            <input type="checkbox" name="checkbox_value" value="{{ this_user.pk }}">
+                        </th>
+                        <td><a href="{% url 'admin:user_detail' pk=this_user.pk %}">{{ this_user.username }}</a></td>
+                        <td>{{ this_user.email }}</td>
+                        <td>
+                            {% if this_user.is_staff %}<span class="fa fa-check" style="color: green"></span>
+                            {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
+                        </td>
+                        <td>
+                            {% if this_user.is_active %}<span class="fa fa-check" style="color: green"></span>
+                            {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
+                        </td>
+                        <td>{% if this_user.is_superuser %}<span class="fa fa-check" style="color: green"></span>
+                        {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}</td>
+                        <td>{{ this_user.date_joined }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </form>
+        </table>
+    </div>
+    <input class="btn btn-danger btn-sm" type="submit" id="delete-button" name="delete_button" form="delete_form" value="Delete Users">
+{% endblock %}
