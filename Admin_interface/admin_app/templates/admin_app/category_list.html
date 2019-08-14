@@ -3,19 +3,64 @@
     Services List
 {% endblock %}
 
+{% block extra_style %}
+    th a { color: #63605f;}
+    th a:visited { color: #63605f;}
+{% endblock %}
+
 {% block body_header_name %}
     Service Category List
 {% endblock %}
 
 {% block content_class %}
     <div class="container">
-        <a class="btn btn-success btn-sm" href="{% url 'admin:category_add' %}">Add Service</a>
-        <div class="col-md-4">
-            <ul class="list-group">
-                {% for service in category %}
-                    <li class="list-group-item list-group-item-info"><a href="{% url 'admin:category_update' pk=service.pk %}">{{ service.name }}</a></li>
-                {% endfor %}
-            </ul>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <form id="delete_form" action={% url 'admin:delete_category' %} method="POST">
+                        {% csrf_token %}
+                        <thead>
+                        <tr>
+                            <th scope="col"><input type="checkbox" id="select_all_checkbox" name="select_all_checkbox"></th>
+                            <th>
+                                <span> Service &nbsp; </span>
+                                <a class="fa fa-sort-up fa-lg" href="{% url 'admin:category_list' %}?sort_by=name"></a>
+                            </th>
+                            <th scope="col">
+                                <span> Created On &nbsp; </span>
+                                <a class="fa fa-sort-up fa-lg" href="{% url 'admin:category_list' %}?sort_by=-created_on"></a></th>
+                            <th scope="col">
+                                <span> Available &nbsp; </span>
+                                <a class="fa fa-sort-up fa-lg" href="{% url 'admin:category_list' %}?sort_by=-available"></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for service in category %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="checkbox_value" value="{{ service.pk }}">
+                                </td>
+                                <td><a href="{% url 'admin:category_update' pk=service.pk %}">{{ service.name }}</a></td>
+                                <td>{{ service.created_on }}</td>
+                                <td>
+                                    {% if service.available %}<span class="fa fa-check" style="color: green"></span>
+                                    {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <a class="btn btn-success btn-sm" href="{% url 'admin:category_add' %}">Add Service</a>
+                </div>
+                <br>
+                <div class="row">
+                    <input class="btn btn-danger btn-sm" type="submit" id="delete-button" name="delete_button" form="delete_form" value="Delete Category">
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
