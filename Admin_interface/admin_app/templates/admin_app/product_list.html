@@ -8,17 +8,65 @@
 {% endblock %}
 
 {% block content_class %}
-    <hr>
     <div class="row">
-        <a class="btn btn-info btn-sm" href="{% url 'admin:product_add' %}">Add Product</a>
-        <div class="col-xs-5">
-            <ul class="list-group">
-                {% for product in products %}
-                    <li class="list-group-item list-group-item-success">
-                        <a href="{% url 'admin:product_update' pk=product.pk %}">{{ product.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <div class="col-md-10">
+            <table class="table">
+                <form id="delete_form" action="{% url 'admin:delete_product' %}" method="POST">
+                    {% csrf_token %}
+                    <thead>
+                    <tr>
+                        <th scope="col"><input type="checkbox" id="select_all_checkbox" name="select_all_checkbox"></th>
+                        <th>
+                            <span> Product &nbsp; </span>
+                            <a class="fa fa-sort-up fa-lg" href="{% url 'admin:product_list' %}?sort_by=name"></a>
+                        </th>
+                        <th>
+                            <span> Category &nbsp; </span>
+                            <a class="fa fa-sort-up fa-lg" href="{% url 'admin:product_list' %}?sort_by=category"></a>
+                        </th>
+                        <th scope="col">
+                            <span> Created On &nbsp; </span>
+                            <a class="fa fa-sort-up fa-lg" href="{% url 'admin:product_list' %}?sort_by=-created_on"></a></th>
+                        <th scope="col">
+                            <span> Available &nbsp; </span>
+                            <a class="fa fa-sort-up fa-lg" href="{% url 'admin:product_list' %}?sort_by=-available"></a></th>
+                        <th scope="col">
+                            <span> Price &nbsp; </span>
+                            <a class="fa fa-sort-up fa-lg" href="{% url 'admin:product_list' %}?sort_by=price"></a></th>
+                        <th scope="col">
+                            <span> Stock &nbsp; </span>
+                            <a class="fa fa-sort-up fa-lg" href="{% url 'admin:product_list' %}?sort_by=stock"></a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="checkbox_value" value="{{ product.pk }}">
+                            </td>
+                            <td><a href="{% url 'admin:product_update' pk=product.pk %}">{{ product.name }}</a></td>
+                            <td><a href="{% url 'admin:category_update' pk=product.category.pk %}">{{ product.category.name }}</a></td>
+                            <td>{{ product.created_on }}</td>
+                            <td>
+                                {% if product.available %}<span class="fa fa-check" style="color: green"></span>
+                                {% else %}<span class="fa fa-ban" style="color: red"></span>{% endif %}
+                            </td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.stock }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </form>
+            </table>
+        </div>
+        <div class="col-xs-1">
+            <div class="row">
+                <a class="btn btn-primary btn-sm" href="{% url 'admin:product_add' %}">Add Product</a>
+            </div>
+            <br>
+            <div class="row">
+                <input class="btn btn-danger btn-sm" type="submit" id="delete-button" name="delete_button" form="delete_form" value="Delete Product">
+            </div>
         </div>
     </div>
 {% endblock %}
