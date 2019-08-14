@@ -7,7 +7,6 @@ app_name = 'admin'
 urlpatterns = [
     path('home/', views.admin_home, name='admin_home'),
     path('password/change', views.change_password, name='change_password'),
-    #path('users/<slug:sort_by>/', views.UserListView.as_view(), name='user_list'),
     path('users/', views.UserListView.as_view(), name='user_list'),
     path('user/add/', views.UserAdd.as_view(), name='add_user'),
     path('user/<int:pk>/', views.UserDetailView.as_view(), name='user_detail'),

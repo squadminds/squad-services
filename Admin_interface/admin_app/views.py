@@ -44,11 +44,10 @@ class UserListView(UserPassesTestMixin, ListView):
     model = User
     template_name = 'admin_app/user_list.html'
     context_object_name = 'users'
-    def get_queryset(self):
-        queryset = User.objects.all()
-        if self.request.GET.get('sort_by'):
-            queryset = User.objects.order_by(self.request.GET.get('sort_by'))
-        return queryset
+
+    def get_ordering(self):
+        ordering = self.request.GET.get('sort_by')
+        return ordering
 
     def test_func(self):
         return self.request.user.is_superuser
