@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function ()
+        {
+            $('.mouseover').on({
+
+                mouseenter:function () { $(this).css('background-color', 'teal'); },
+
+                mouseleave: function () { alert("Leaving?"); },
+
+                click:function () { $(this).css('background-color','coral'); },
+
+                dblclick:function () { alert("Don't Double Click Here"); }
+            });
+
+            $('.hover').hover(function () {$(this).css({"background-color" : "linen", "font-size": "90%"});},
+
+                function () { $(this).css({"background-color" : "lightskyblue", "font-size": "110%"});
+            });
+
+            $('.keyboard').on({
+
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="mouse-events">
+    <p class="mouseover">Enter, leave, Click, Double Click here</p>
+    <hr>
+    <br>
+    <hr>
+    <p class="hover">Hover over here</p>
+</div>
+</body>
+</html>

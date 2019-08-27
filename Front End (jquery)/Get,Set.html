@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get | SET |VAL | ATTR</title>
+    <script src="jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#text').click(function () {
+                alert($('h3').text());
+            })
+            $('#html').click(function () {
+                alert($('h3').html());
+            })
+            $('#value').click(function () {
+                alert($('#val').val());
+            })
+            $('#attr').click(function () {
+                alert($('h3').attr('style'))
+            })
+            $('#settext').click(function () {
+                $('h3').text("Boom Man! Text Changed YO!!");
+            })
+            $('#sethtml').click(function () {
+                $('h3').html('Whole HTML changed bruv! <strong style="color:teal">This is Epic</strong>');
+            })
+            $('#setvalue').click(function () {
+                $('#val').val('Lol! What was your value again?')
+                });
+            $('#setattr').click(function () {
+                $('h3').attr('style:"color: black; background: lightpink')
+            })
+            })
+    </script>
+</head>
+<body>
+<p style="color: red">Not able to SET and Get Multiple attributes as of now</p>
+<div class="demo">
+    <h1>Check the HTML before and after setting Text/HTML</h1>
+    <h2>GET</h2>
+    <button id="text">Text</button>
+    <button id="html">HTML</button>
+    <button id="attr">Attribute</button>
+    <h3 class="test" style="color: white; background: coral">This is the <a href="#">H3 </a>
+        tag and this will be our <strong style="color: teal">DEMO</strong> tag</h3>
+    <input id="val" value="$101Bn" placeholder="Enter value">
+    <button id="value"> Show Value</button>
+    <button id="setvalue"> Set Value</button>
+    <hr>
+    <h2>SET</h2>
+    <button id="settext"> Set Text</button>
+    <button id="sethtml"> Set HTML</button>
+    <button id="setattr">Set Attribute</button>
+
+</div>
+</body>
+</html>

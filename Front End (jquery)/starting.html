@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+   $('.p1').click(function () {
+      $(this).hide()
+   });
+   $('.p2').hover(function () {
+       alert("This is class p2")
+   });
+   $('.p3').mouseleave(function () {
+       alert("Entering of mouse over p3")
+   });
+});
+</script>
+</head>
+<body>
+
+<p class="p1">If you click on me, I will disappear.</p>
+<p class="p2">Click me away!</p>
+<p class="p3">Click me too!</p>
+
+</body>
+</html>

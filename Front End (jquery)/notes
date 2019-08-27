@@ -1,0 +1,58 @@
+$() === jQuery() we can use both
+
+It uses almost the same selectors like CSS for selection
+
+on() is used for assigning multiple events to a same element/class
+
+when changing multiple property, ("property", "value") is replaced by ({'property1':'value1', 'property2':'value2'})
+
+alert() is used alone unlike $(this).css() and any other properties
+
+FadeTo, FadeIn/out,Hide/show can be done by CSS too but it is a lengthy process
+
+html() function does not show the start and closing tag of any html element. It'll only show inside of that element/class
+selector but not the part that includes it. For example, while showing whole body, it'll show everything but <body>
+</body>
+_
+append,after looks same but there is a nice detailed solution on Stackoverflow
+_______________________________________________________________________________________
+
+QUESTIONS?
+
+Callback Multiple
+Change Document (Inner HTML) using jQuery  --> $("#id").html("text");   would it work?
+
+ $('element.className').text('new Text');  ?????
+
+ change style="something" attribute using SET attr() in an element.
+
+ attr(shows the value as [object] when there are more than one elements) ?????
+
+ Can't we use requests() to access the API at the front end and then render it in a template?
+
+How can we send authentication token for our app? using jQuery/requests?
+
+Display an array of dictonaries in the page where Output is [object Object][object Object] --> Done By looping
+
+On Page refresh, token is lost. What to do?
+
+_________________________________________________________________________________
+
+jQuery- AJAX
+
+AJAX is about loading data in the background and display it on the webpage, without reloading the whole page
+
+$(document).ready(function() {
+            $('button').click(function () {
+                $.get( "http://127.0.0.1:8000/rest-api/polls/2/", function( data ) {
+                    $( "strong" ).text( data.question );
+                    $( "i" ).text( data.created_by );
+                });
+            })
+        })
+
+ This is jQuery-AJAX request. Where we are provided with a Dictonary called data.
+
+ if it were to a list, we had to use data[0].key1 for first object in list, data[1].key1 in second object
+
+https://docs.djangoproject.com/en/2.2/ref/csrf/#ajax --For CSRF TOKEN but we don;t need it as of now

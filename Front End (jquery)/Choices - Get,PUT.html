@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<title>Choice API</title>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="Choices%20-%20Get,PUT.js"></script>
+</head>
+<body>
+
+<h3>Enter the Id of the Choice for which you want to PUT/GET and then Press <span style="color: teal">Get Data</span></h3>
+<input value='' id="choice_number" placeholder="Enter Choice Number">
+<button id="get-data">Get Data</button>
+<br><br>
+<p>Answer for Poll number <strong>__</strong> is : <i>______________</i>.</p>
+<br><hr>
+<h3>Edit this Choice</h3>
+Poll: <input id="poll" value="" placeholder="Enter Poll Number">
+Choice: <input id="choice" value='' placeholder="Enter Choice Text" >
+<br><br>
+
+<button id="put-data">Put Data</button>
+<br><hr>
+<div><h3>Get List of All the Choices Present in the DB</h3></div><br>
+<button id="get-list">Get List</button>
+<br><hr>
+<h3>Create a new Choice for Existing Polls</h3>
+<form method="post" id="new-list-form">
+    Enter Poll Id:<input type="text" name="poll">
+    Enter Choice Text:<input type="text" name="choice_text">
+    <button type="submit">Submit</button>
+</form>
+<br><hr><br>
+<a href="login.html">Login</a>
+</body>
+</html>

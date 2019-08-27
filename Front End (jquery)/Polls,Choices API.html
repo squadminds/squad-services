@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POLLS</title>
+    <script src="jquery.js"></script>
+    <script src="Polls,Choices%20API.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="poll">
+                    <h5>Enter Id of the Question</h5>
+                    <input value='' id="poll_number" placeholder="Enter Poll ID">
+                    <button id="get-data">Get Data</button>
+                    <br><br>
+
+                    <p>Question: <i style="color:cornflowerblue">__</i> is asked by : <strong>______________</strong>.</p>
+                    <br><hr>
+
+                    <h5>Edit this Question</h5>
+                    Question: <input id="question" value="" placeholder="Enter Question" class="form-inline">
+                    Author: <input id="asked_by" value='' placeholder="Enter Author" class="form-inline" >
+                    <br><br>
+                    <button id="put-data">Put Data</button>
+                    <br><hr>
+
+                    <div class="polls-list"><h5>Get List of All the Questions Present in the DB</h5></div><br>
+                    <button id="get-polls-list">Get List</button>
+                    <br><hr>
+
+                    <h5>Create a new Poll</h5>
+                    <form method="post" id="new-list-form" >
+                        Question:<input type="text" name="question" class="form-group">
+                        Asked By:<input type="text" name="created_by" class="form-group">
+                        <button type="submit">Submit</button>
+                    </form>
+                    <br><hr><br>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-6">
+                <div class="choice">
+                    <h5>Enter the Id of Choice </h5>
+                    <input value='' id="choice_number" placeholder="Enter Choice Number">
+                    <button id="get-choice">Get Data</button>
+                    <br><br>
+                    <p>Answer for Poll number <strong>__</strong> is : <i>______________</i>.</p>
+                    <br><hr>
+                    <h5>Edit this Choice</h5>
+                    Poll: <input id="poll" value="" placeholder="Enter Poll Number" class="form-inline">
+                    Choice: <input id="choice" value='' placeholder="Enter Choice Text" class="form-inline">
+                    <br><br>
+
+                    <button id="put-choice-data">Put Data</button>
+                    <br><hr>
+
+                    <div class="choice-list"><h5>Get List of All the Choices Present in the DB</h5></div><br>
+                    <button id="get-choice-list">Get List</button>
+                    <br><hr>
+
+                    <h5>Create a new Choice for Existing Polls</h5>
+                    <form method="post" id="new-choice-form" >
+                        Poll Id:<input type="text" name="poll" class="form-group">
+                        Choice :<input type="text" name="choice_text" class="form-group">
+                        <button type="submit">Submit</button>
+                    </form>
+                    <br><hr><br>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-sm" href="login.html">Login</a>
+    </div>
+</div>
+</body>
+</html>

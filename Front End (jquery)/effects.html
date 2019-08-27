@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Effets</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#drama').click(function () {
+                $('.hide-show').hide(600,function () {
+                    alert("This is Callback")
+                })
+            })
+            $('#surprise').click(function () {
+                $('.show').css({"display":"inline", 'background':'coral'})
+            })
+            $('.click-hide').click(function () {
+                $(this).hide()
+            })
+            $('.hover-hide').on({
+                mouseenter: function () {
+                    $(this).hide(500)
+                },
+                mouseleave: function () {
+                    $(this).show(500)
+                }
+            })
+            $('#toggle').click(function () {
+                $('.click-hide, .show').toggle(700)
+            })
+
+            $('#fadeout').click(function () {
+                $('.hide-show').fadeOut(600,function () {
+                    alert("This is Callback with Fade Out")
+                })
+            })
+            $('#fadein').click(function () {
+                $('.hide-show').fadeIn(600,function () {
+                    alert("This is Callback With Fade In")
+                })
+            })
+            $('#fadetoggle').click(function () {
+                $('.click-hide, .show').fadeToggle(1500)
+            })
+            $('#slideup').click(function () {
+                $('.hide-show').slideUp(600)
+            })
+            $('#slidedown').click(function () {
+                $('.hide-show').slideDown(600)
+            })
+            $('#slidetoggle').click(function () {
+                $('.click-hide, .show').slideToggle(1500)
+            })
+        })
+
+
+    </script>
+</head>
+<body>
+<h3>Hide/Show/Toggle</h3>
+<div class="hide-show">
+    <p class="click-hide">Click me to hide</p>
+    <p class="hover-hide" style="background: cornflowerblue">Hover me to Hide</p>
+    <p class="show" style="display: none;">BOOM! I was always here. You never saw me coming. Did You?</p>
+</div>
+<hr>
+<button id="drama">Drama?</button>
+<button id="surprise">Surprise?</button>
+<button id="toggle">Toggle</button>
+<hr>
+<h3>Fading </h3>
+<button id="fadeout">Fade-Out</button>
+<button id="fadein">Fade-In</button>
+<button id="fadetoggle">Fade-Toggle</button>
+<hr>
+<h3>Slide/Toggle</h3>
+<button id="slideup">Slide-Up</button>
+<button id="slidedown">Slide-Down</button>
+<button id="slidetoggle">Slide-Toggle</button>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for dict in data %}
+    <p>Answer for Poll number {{ dict.poll}} is </p>
+    <p><i>"{{ dict.choice_text }}"</i></p>
+    <hr>
+{% endfor %}
+
+</body>
+</html>
